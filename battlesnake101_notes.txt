@@ -1,0 +1,18 @@
+- Create an account on play.battlesnake.com
+    We can create an account with one click if we have a github account
+
+- We can use ngrok to expose our local running snake to the internet
+    ngrok will give us a public URL which we can then 
+
+- activate the virtual environment
+    source venv/bin/activate
+
+- install flask libraries. 
+    pip install -r requirements.txt
+
+
+DEPRECATED IDEA
+- Open localhost port on which battlesnake is running to the internet so we can use it on the Battlesnke platform.
+    Forwarding HTTP trafic to battlesnake_team14.serveo.net by opening localhost port 8000 (which is the port on which the battlesnake is running)
+    how? ssh -R battlesnake_team14:80:localhost:8000 serveo.net
+    (port may vary and the 'battlesnake_team14.serveo.net' if offline, can be taken by some other user and we'll not be able to access it. Domain not ours permanently)
