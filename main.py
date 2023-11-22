@@ -94,14 +94,23 @@ def move(game_state: typing.Dict) -> typing.Dict:
     for snake in opponent_snakes:
         snake_body = snake["body"]
         for snake_body_part in snake_body:
+            my_length = game_state['you']['length']
             if(my_head["x"] == snake_body_part["x"]-1 and my_head["y"] == snake_body_part["y"]):
                 is_move_safe["right"] = False
+                if(snake_body_part == snake["head"] and snake["length"] <= my_length):
+                    is_move_safe["right"] = True
             if(my_head["x"] == snake_body_part["x"]+1 and my_head["y"] == snake_body_part["y"]):
                 is_move_safe["left"] = False
+                if(snake_body_part == snake["head"] and snake["length"] <= my_length):
+                    is_move_safe["left"] = True
             if(my_head["y"] == snake_body_part["y"]-1 and my_head["x"] == snake_body_part["x"]):
                 is_move_safe["up"] = False
+                if(snake_body_part == snake["head"] and snake["length"] <= my_length):
+                    is_move_safe["up"] = True
             if(my_head["y"] == snake_body_part["y"]+1 and my_head["x"] == snake_body_part["x"]):
                 is_move_safe["down"] = False
+                if(snake_body_part == snake["head"] and snake["length"] <= my_length):
+                    is_move_safe["down"] = True
 
     # Are there any safe moves left?
     safe_moves = []
@@ -121,6 +130,9 @@ def move(game_state: typing.Dict) -> typing.Dict:
 
     print(f"MOVE {game_state['turn']}: {next_move}")
     return {"move": next_move}
+
+def is_head_to_head_safe():
+    print("place holder")
 
 
 # Start server when `python main.py` is run
